@@ -66,11 +66,34 @@ function applyCream(input: HTMLInputElement): void {
 }
 
 function applySyrup(input: HTMLInputElement): void {
-  // TODO: implement this function
+  const syrupElements = document.getElementsByClassName("syrup");
+
+  if (syrupElements.length === 0) return;
+
+  const syrupDiv = syrupElements[0] as HTMLDivElement;
+
+  const color = syrups[input.value];
+  if (!color) return;
+
+  // Set CSS custom property
+  syrupDiv.style.setProperty("--syrup-color", color);
 }
 
 function setupSyrupListeners(): void {
-  // TODO: implement this function
+  const syrupInputs = document.querySelectorAll<HTMLInputElement>(
+    'input[name="syrup"]'
+  );
+
+  syrupInputs.forEach((input) => {
+    input.addEventListener("change", () => {
+      applySyrup(input);
+    });
+
+    // Apply initial state on page load
+    if (input.checked) {
+      applySyrup(input);
+    }
+  });
 }
 
 setupSyrupListeners();
