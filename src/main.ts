@@ -1,3 +1,7 @@
+/*
+Author: Noelia Doman
+Class: CIS 371
+*/
 import "./style.scss";
 // import { setupCounter } from "./counter.ts";
 
